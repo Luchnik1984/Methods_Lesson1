@@ -9,7 +9,7 @@ public class Main {
         return input.nextInt();
     }
     // задача1. Метод проверки не является ли указанный год старше 1584.
-    public static int checkingLowerLimitOfYear (){
+    public static int checkLowerLimitOfYear (){
         int year = getYear();
         while (year <1584) {
             System.out.print(year + " год. Вы ввели год старше 1584. Попробуйте ещё раз: ");
@@ -18,7 +18,7 @@ public class Main {
         return year;
     }
     //задача1. Метод проверки является ли год високосным
-    public static String isLeapYear(int year) {
+    public static String checkIsLeapYear(int year) {
         if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
             return year + " - Это високосный год.";
         } else {
@@ -34,7 +34,7 @@ public class Main {
         return input.nextInt();
     }
     // Задача 2. Метод вывода ссылки для установки нужной ОС
-    public static void softwareVersionSelection (int currentYear) {
+    public static void selectionSoftwareVersion (int currentYear) {
         int year = getYear();
         if (year == currentYear) {
             switch (getOsVersion()) {
@@ -61,17 +61,41 @@ public class Main {
             }
         }
     }
+    // Задача 3. Метод определения дней доставки от расстояния
+    public static String estimatingDeliveryTime(int distance) {
+        int deliveryTime = 0;
+        if (distance<0){
+            return "Введите корректное расстояние";
+        }
+        if ( distance <= 20) {
+            deliveryTime++;
+            // return "понадобится " + time + " день для доставки карты";
+        } else if(distance<=60){
+            deliveryTime+=2;
+            // return "понадобится " + time + " дня для доставки карты";
+        } else if (distance<=100) {
+            deliveryTime+=3;
+            //return "понадобится " + time + " дня для доставки карты";
+        } else {
+            return " Карта не доставляется";
+        }
+        return "Понадобится "+ deliveryTime+(deliveryTime==1 ?" день ":" дня ")+"для доставки карты";
+    }
 
     public static void main(String[] args) {
         System.out.println("\nЗадача 1. Проверка високосного года ");
         System.out.print("Введите год не старше 1584: ");
         int year;
-        year = checkingLowerLimitOfYear();
-        System.out.println(isLeapYear(year));
+        year = checkLowerLimitOfYear();
+        System.out.println(checkIsLeapYear(year));
         // Задача 2.
         System.out.println("\nЗадача 2.");
         System.out.print("Укажите год создания телефона: ");
         int currentYear = LocalDate.now().getYear();
-        softwareVersionSelection(currentYear);
+        selectionSoftwareVersion(currentYear);
+        // Задача 3.
+        System.out.println("\nЗадача 3.");
+        int deliveryDistance = 95;
+        System.out.println(estimatingDeliveryTime(deliveryDistance));
     }
 }
