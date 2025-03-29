@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Main {
     // Задача 1 и задача 2. Метод для ввода года.
     public static int getYear() {
-//        System.out.print("Введите год не старше 1584: ");
         Scanner input = new Scanner(System.in);
         return input.nextInt();
     }
