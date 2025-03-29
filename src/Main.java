@@ -37,7 +37,7 @@ public class Main {
         String yearVersion = getYear() < currentYear ? " облегчённую " : " обычную ";
         int appVersion = getOsVersion();
         if (appVersion != 0 && appVersion != 1) {
-            System.out.println("Вы ввели недопустимое значение версии.");
+            System.out.println("Вы ввели недопустимое значение ОС.");
         } else {
             String osVersion = appVersion == 0 ? "iOs" : "Android";
             System.out.println("Установите" + yearVersion + "версию приложения для " + osVersion + " по ссылке:");
