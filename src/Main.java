@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
-    // задача1. Метод для ввода года
+    // Задача 1 и задача 2. Метод для ввода года.
     public static int getYear() {
 //        System.out.print("Введите год не старше 1584: ");
         Scanner input = new Scanner(System.in);
@@ -34,31 +34,14 @@ public class Main {
         return input.nextInt();
     }
     // Задача 2. Метод вывода ссылки для установки нужной ОС
-    public static void selectionSoftwareVersion (int currentYear) {
-        int year = getYear();
-        if (year == currentYear) {
-            switch (getOsVersion()) {
-                case 0:
-                    System.out.println("Установите версию приложения для iOS по ссылке:");
-                    break;
-                case 1:
-                    System.out.println("Установите версию приложения для Android по ссылке:");
-                    break;
-                default:
-                    System.out.println("Вы ввели недопустимое значение.");
-            }
-        }
-        else if(year < currentYear){
-            switch (getOsVersion()) {
-                case 0:
-                    System.out.println("Установите облегчённую версию приложения для iOS по ссылке:");
-                    break;
-                case 1:
-                    System.out.println("Установите облегчённую версию приложения для Android по ссылке:");
-                    break;
-                default:
-                    System.out.println("Вы ввели недопустимое значение.");
-            }
+    public static void selectionSoftwareVersion(int currentYear) {
+        String yearVersion = getYear() < currentYear ? " облегчённую " : " обычную ";
+        int appVersion = getOsVersion();
+        if (appVersion != 0 && appVersion != 1) {
+            System.out.println("Вы ввели недопустимое значение версии.");
+        } else {
+            String osVersion = appVersion == 0 ? "iOs" : "Android";
+            System.out.println("Установите" + yearVersion + "версию приложения для " + osVersion + " по ссылке:");
         }
     }
     // Задача 3. Метод определения дней доставки от расстояния
